@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">Chicago Grocery Store Bar Crawl</h1>
+        <p class="hero-subtitle">Discover the city's hidden gems through local markets and craft beverages</p>
+        <div class="hero-buttons">
+            <a href="/routes" class="btn btn-primary">Explore Routes</a>
+            <a href="/about" class="btn btn-secondary">Learn More</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <div class="hero-placeholder">
+            <span>🍺 🛒 🌆</span>
+        </div>
+    </div>
+</section>
+
+<!-- Next Event Section -->
+<section id="next-event" class="next-event">
+    <div class="container">
+        <div class="next-event-content">
+            <div class="next-event-icon">🎉</div>
+            <h2 class="next-event-title">Next Event Coming Soon!</h2>
+            <p class="next-event-date">TBD - Sometime Before Summer Ends</p>
+            <p class="next-event-description">Get ready for another amazing Chicago Grocery Store Bar Crawl adventure! We're planning something special to close out the summer in style.</p>
+            <div class="next-event-actions">
+                <a href="/contact" class="btn btn-primary">Get Notified</a>
+                <a href="/routes" class="btn btn-secondary">View Routes</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about">
+    <div class="container">
+        <h2 class="section-title">About Our Unique Experience</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Welcome to the Chicago Grocery Store Bar Crawl - where we combine the best of local markets with craft beverages to create an unforgettable urban adventure. Our curated routes take you through Chicago's most vibrant neighborhoods, stopping at unique grocery stores, specialty markets, and local bars.</p>
+                <p>This event was born when a few friends at work came up with this idea during a casual lunch break. What started as a joke about combining grocery shopping with bar hopping quickly evolved into a unique way to explore Chicago's diverse neighborhoods and support local businesses.</p>
+                <p>Each location has been carefully selected to showcase the diversity and character of Chicago's food and drink scene. From artisanal cheese shops to craft beer havens, you'll experience the city like never before.</p>
+            </div>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>Curated Routes</h3>
+                    <p>Expertly planned paths through Chicago's best neighborhoods</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🍷</div>
+                    <h3>Craft Beverages</h3>
+                    <p>Discover local breweries, wineries, and specialty drink shops</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🛒</div>
+                    <h3>Local Markets</h3>
+                    <p>Explore unique grocery stores and specialty food shops</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Routes Section -->
+<section id="routes" class="routes">
+    <div class="container">
+        <h2 class="section-title">Popular Routes</h2>
+        <div class="routes-grid">
+            {% for route in routes %}
+            <div class="route-card">
+                <div class="route-image">
+                    <div class="route-placeholder">{{ route.name.split('&')[0].strip() }}</div>
+                </div>
+                <div class="route-content">
+                    <h3>{{ route.name }}</h3>
+                    <p>{{ route.description }}</p>
+                    <ul class="route-stops">
+                        {% for stop in route.stops %}
+                        <li>{{ stop }}</li>
+                        {% endfor %}
+                    </ul>
+                    <div class="route-details">
+                        <span class="route-duration">⏱️ {{ route.duration }}</span>
+                        <span class="route-distance">📏 {{ route.distance }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %} 

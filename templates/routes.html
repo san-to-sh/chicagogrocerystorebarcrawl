@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Routes Hero Section -->
+<section class="hero routes-hero">
+    <div class="hero-content">
+        <h1 class="hero-title">Bar Crawl Routes</h1>
+        <p class="hero-subtitle">Explore our curated routes through Chicago's most vibrant neighborhoods</p>
+    </div>
+</section>
+
+<!-- Routes Section -->
+<section class="routes">
+    <div class="container">
+        <h2 class="section-title">Choose Your Adventure</h2>
+        <div class="routes-grid">
+            {% for route in routes %}
+            <div class="route-card">
+                <div class="route-image">
+                    <div class="route-placeholder">{{ route.name.split('&')[0].strip() }}</div>
+                </div>
+                <div class="route-content">
+                    <h3>{{ route.name }}</h3>
+                    <p>{{ route.description }}</p>
+                    <ul class="route-stops">
+                        {% for stop in route.stops %}
+                        <li>{{ stop }}</li>
+                        {% endfor %}
+                    </ul>
+                    <div class="route-details">
+                        <span class="route-duration">⏱️ {{ route.duration }}</span>
+                        <span class="route-distance">📏 {{ route.distance }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Route Comparison Section -->
+<section class="route-comparison">
+    <div class="container">
+        <h2 class="section-title">Route Comparison</h2>
+        <div class="comparison-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Route</th>
+                        <th>Duration</th>
+                        <th>Distance</th>
+                        <th>Stops</th>
+                        <th>Best For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for route in routes %}
+                    <tr>
+                        <td><strong>{{ route.name }}</strong></td>
+                        <td>{{ route.duration }}</td>
+                        <td>{{ route.distance }}</td>
+                        <td>{{ route.stops|length }} stops</td>
+                        <td>
+                            {% if route.id == 'wicker-park' %}
+                            Hipsters & Craft Beer Lovers
+                            {% elif route.id == 'lincoln-park' %}
+                            Upscale Crowd & Wine Enthusiasts
+                            {% else %}
+                            Foodies & Local Culture
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+.routes-hero {
+    min-height: 60vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.comparison-table {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+.comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e1e5e9;
+}
+
+.comparison-table th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.comparison-table tr:hover {
+    background: #f8f9fa;
+}
+
+@media (max-width: 768px) {
+    .comparison-table {
+        padding: 1rem;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+}
+</style>
+{% endblock %} 
