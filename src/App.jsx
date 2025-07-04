@@ -8,21 +8,19 @@ function Home() {
     <main>
       {/* Hero Section */}
       <section id="home" className="hero">
-        <div className="hero-content" style={{ textAlign: 'left', marginLeft: '3rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', flexWrap: 'wrap' }}>
-            <h1 className="hero-title" style={{ margin: 0 }}>Chicago Grocery Store Bar Crawl</h1>
-            <span className="hero-subtitle" style={{ fontSize: '2rem', fontWeight: 400, margin: 0 }}>
-              Discover the city's hidden gems through local markets and craft beverages
-            </span>
+        <div className="hero-content responsive-hero-content">
+          <div className="hero-row">
+            <h1 className="hero-title">Chicago Grocery Store Bar Crawl</h1>
+            <span className="hero-subtitle">Discover the city's hidden gems through local markets and craft beverages</span>
           </div>
-          <div className="hero-buttons" style={{ justifyContent: 'flex-start', display: 'flex', gap: '1rem', marginTop: '2rem' }}>
+          <div className="hero-buttons">
             <Link to="/routes" className="btn btn-primary">Explore Routes</Link>
             <Link to="/about" className="btn btn-secondary">Learn More</Link>
           </div>
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '2rem', margin: '3rem 0 0 0' }}>
-            <span role="img" aria-label="beer" style={{ fontSize: '6rem' }}>🍺</span>
-            <span role="img" aria-label="cart" style={{ fontSize: '6rem' }}>🛒</span>
-            <span role="img" aria-label="city" style={{ fontSize: '6rem' }}>🌆</span>
+          <div className="hero-emojis">
+            <span role="img" aria-label="beer">🍺</span>
+            <span role="img" aria-label="cart">🛒</span>
+            <span role="img" aria-label="city">🌆</span>
           </div>
         </div>
       </section>
@@ -138,7 +136,7 @@ function RoutesPage() {
              <div style={{ margin: '1rem 0', fontSize: '1.1rem' }}>
                <span role="img" aria-label="map">🗺️</span> <b>Route:</b>
              </div>
-             <div className="roadmap" style={{ width: '100%', margin: '2rem 0', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+             <div className="roadmap responsive-roadmap">
                {/* Winding SVG Roadmap with Pins */}
                <svg viewBox="0 0 800 220" width="100%" height="220" style={{ maxWidth: '700px', display: 'block' }}>
                  {/* Winding road path */}
@@ -166,23 +164,11 @@ function RoutesPage() {
                  </g>
                </svg>
                {/* Stop labels */}
-               <div style={{ width: '100%', maxWidth: '700px', margin: '1rem auto 0', display: 'flex', justifyContent: 'space-between', fontWeight: 'bold', color: '#ffa94d', fontSize: '1.1rem' }}>
-                 <div style={{ width: '25%', textAlign: 'center' }}>
-                   Jewel at Clark/Division
-                   <div style={{ fontSize: '2rem', marginTop: '0.25rem' }}>🏪</div>
-                 </div>
-                 <div style={{ width: '25%', textAlign: 'center' }}>
-                   Whole Foods or Mariano’s at North/Clybourn
-                   <div style={{ fontSize: '2rem', marginTop: '0.25rem' }}>🥗</div>
-                 </div>
-                 <div style={{ width: '25%', textAlign: 'center' }}>
-                   Mariano’s on Broadway
-                   <div style={{ fontSize: '2rem', marginTop: '0.25rem' }}>🧀</div>
-                 </div>
-                 <div style={{ width: '25%', textAlign: 'center' }}>
-                   Shakers on Clark (End)
-                   <div style={{ fontSize: '2rem', marginTop: '0.25rem' }}>🎤</div>
-                 </div>
+               <div className="roadmap-labels">
+                 <div className="roadmap-stop">Jewel at Clark/Division<div style={{ fontSize: '2rem', marginTop: '0.25rem' }}>🏪</div></div>
+                 <div className="roadmap-stop">Whole Foods or Mariano’s at North/Clybourn<div style={{ fontSize: '2rem', marginTop: '0.25rem' }}>🥗</div></div>
+                 <div className="roadmap-stop">Mariano’s on Broadway<div style={{ fontSize: '2rem', marginTop: '0.25rem' }}>🧀</div></div>
+                 <div className="roadmap-stop">Shakers on Clark (End)<div style={{ fontSize: '2rem', marginTop: '0.25rem' }}>🎤</div></div>
                </div>
              </div>
              <div style={{ margin: '0.5rem 0', fontSize: '1.1rem' }}>
